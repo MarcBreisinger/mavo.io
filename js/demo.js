@@ -135,12 +135,12 @@ URL=https://mavo.io/demos/${id}`);
 					if (files) {
 						var binaryExtensions = ["woff", "png", "jpg", "gif"];
 
-						files.trim().split(/\s+/).forEach(file => {
-							var ext = Mavo.Functions.from(file, ".");
-							isBinary = binaryExtensions.indexOf(ext) > -1;
-							console.log(ext, isBinary);
-							zip.file(file, $.fetch(file, isBinary? {responseType: "arraybuffer"} : undefined).then(xhr => xhr.response));
-						});
+                                                files.trim().split(/\s+/).forEach(file => {
+                                                        var ext = Mavo.Functions.from(file, ".");
+                                                        var isBinary = binaryExtensions.indexOf(ext) > -1;
+                                                        console.log(ext, isBinary);
+                                                        zip.file(file, $.fetch(file, isBinary? {responseType: "arraybuffer"} : undefined).then(xhr => xhr.response));
+                                                });
 					}
 
 					zip.generateAsync({type:"blob"}).then(function(blob) {
